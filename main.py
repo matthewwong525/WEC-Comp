@@ -3,7 +3,7 @@ import time
 from GUI import DrawElevator
 from Floor import Floor
 from Person import Person
-#from Elevator import Elevator
+from Elevator import Elevator
         
 def main():
     currentIndex = 0
@@ -25,7 +25,7 @@ def main():
     for i in range(numFloors):
         floorList.append(Floor(i))
     for i in range(numElevators):
-        elevatorList.append("LOL")
+        elevatorList.append(Elevator(5,numFloors))
 
 
     while time_tick < 1000:
@@ -37,14 +37,16 @@ def main():
             #populates the floor class
             new_person = Person(time_tick,startFloor,endFloor)
             floorList[startFloor].appendPerson(new_person)
-            
-            #updates the current states in here
-            #print(time_tick)
-
-
             currentIndex += 1
+
+        #updates the elevator class
+        for elevator in elevatorList:
+            floorList = elevator.update(floorList)
+
+        drawGui.update(elevatorList,floorList)
+
         time_tick += 1
-        #time.sleep(1)
+        time.sleep(0.1)
 
 
 main()

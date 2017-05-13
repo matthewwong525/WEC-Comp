@@ -53,17 +53,16 @@ class DrawElevator:
         elevCount = 0
         floorCount = 0
         for elevator in Elevators:        
-            self.pplElevText[elevCount].setText(elevator.people.length)
-            pointList = self.elevBox.getPoints()
-            curY = pointList[0].getY()
+            self.pplElevText[elevCount].setText(len(elevator.people))
+            print(len(elevator.people))
+            pointBox = self.elevBox[elevCount].getCenter()
+            curY = pointBox.getY()
             targetY = 480 - elevator.current_floor * self.floorDist
-            dY = curY - targetY
+            dY = targetY - curY
             self.elevBox[elevCount].move(0,dY)
             elevCount += 1
-            
-
         for floor in Floors:
-            self.pplFloorText[floorCount].setText(floor.personList.lengths)
+            self.pplFloorText[floorCount].setText(len(floor.personList))
             floorCount += 1
 
-            
+

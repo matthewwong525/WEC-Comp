@@ -9,5 +9,5 @@ class Floor():
         self.personList.append(person)
 
     def deletePerson(self,numPplDel):
-        for i in range(numfPplDel):
-            self.personList.popleft()
+        for i in range(numPplDel):
+            self.personList.pop(0)
