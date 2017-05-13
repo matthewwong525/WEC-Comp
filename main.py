@@ -1,5 +1,6 @@
 import json
 import time
+from GUI import DrawElevator
 from Floor import Floor
 from Person import Person
 #from Elevator import Elevator
@@ -18,12 +19,13 @@ def main():
     numElevators = jsonFile["elevators"]
     floorList = []
     elevatorList = []
-    #drawGui = GUI.DrawElevator(numFloors,numElevators)
+    drawGui = DrawElevator(numFloors,numElevators)
+    drawGui.initialDraw()
 
     for i in range(numFloors):
         floorList.append(Floor(i))
     for i in range(numElevators):
-        elevatorList.append()
+        elevatorList.append("LOL")
 
 
     while time_tick < 1000:
