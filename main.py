@@ -1,6 +1,7 @@
 import json
 import time
 from Floor import Floor
+from Person import Person
 #from Elevator import Elevator
         
 def main():
@@ -17,13 +18,13 @@ def main():
     numElevators = jsonFile["elevators"]
     floorList = []
     elevatorList = []
+    #drawGui = GUI.DrawElevator(numFloors,numElevators)
 
     for i in range(numFloors):
         floorList.append(Floor(i))
     for i in range(numElevators):
-        elevatorList.append("LOL")
+        elevatorList.append()
 
-    print(floorList[0])
 
     while time_tick < 1000:
         #stores the data locally from the json object
@@ -31,8 +32,9 @@ def main():
             startFloor = jsonFile["events"][currentIndex]["start"]
             endFloor = jsonFile["events"][currentIndex]["end"]
 
-            #adds to floor class
-            #floorList[startFloor-1].appendPerson()
+            #populates the floor class
+            new_person = Person(time_tick,startFloor,endFloor)
+            floorList[startFloor].appendPerson(new_person)
             
             #updates the current states in here
             #print(time_tick)

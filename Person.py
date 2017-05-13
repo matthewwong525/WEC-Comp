@@ -1,5 +1,5 @@
-class Person:
-    def __init__(self, appearTime, totalTime, curr_floor, go_floor):
+class Person():
+    def __init__(self, appearTime, curr_floor, go_floor):
         self.appearTime = 0
         self.totalTime = 0
         self.go_floor = 0
