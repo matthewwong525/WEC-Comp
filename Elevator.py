@@ -46,20 +46,26 @@ class Elevator:
         if len(floors_with_people) == 0 and len(self.people) == 0:
             self.state = 'stopped'
 
+        # If it is stopped, just look for the first floor with people, and set direction to that
         if self.state == 'stopped':
             if floors_with_people[0] > self.current_floor:
-                self.direction = 1;
+                self.direction = 1
+                self.mustWait = 3 * abs(floors_with_people[0] - self.current_floor)
             elif floors_with_people < self.current_floor:
-                self.direction = -1;
+                self.direction = -1
+                self.mustWait = 3 * abs(floors_with_people[0] - self.current_floor)
 
-
+        # Dont do anything if the elevator is moving
         if (self.state == 'moving' or self.state == 'stopping') and self.waitTime < self.mustWait:
             # Dont do anything if the elevator is in motion
             self.waitTime += 1
             return
-        # If the elevator is moving and it has moved for 3 ticks
+
+        # If the elevator is moving and it has moved for 3 wait ticks
         if self.state == 'moving' and self.waitTime == self.mustWait:
             self.current_floor += self.mustWait * self.direction / 3
+            self.arrive()
+
 
         for person in self.people:
 

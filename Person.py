@@ -8,4 +8,3 @@ class Person:
     def get_travelTime(self, time): #calculate total travel time
         time = totalTime - appearTime
         return time
-    
