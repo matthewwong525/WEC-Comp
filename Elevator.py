@@ -30,6 +30,9 @@ class Elevator:
         for person in self.people:
             if person.dest == self.current_floor:
                 self.people.remove(person)
+                self.state == 'stopping'
+                self.mustWait = 10;
+                self.waitTime = 0;
 
     def update(self, floors):
         floors_with_people = []
@@ -66,10 +69,3 @@ class Elevator:
             self.current_floor += self.mustWait * self.direction / 3
             self.arrive()
 
-
-        for person in self.people:
-
-        if self.direction == 0:  # Stopped
-            for floor in floors_with_people:
-                # Get the next floor
-                self.arrive()
